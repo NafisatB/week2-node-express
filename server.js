@@ -11,6 +11,8 @@ app.use(express.json());
 // custom logging of middleware
 app.use((req, res, next)=>{
   console.log(`${req.body} ${req.url} - ${new Date}`)
+//   console.log(`${req.method} ${req.url} - ${new Date().toISOString()}`);
+// console.log("Body:", req.body);
   next();
 });
 
@@ -43,8 +45,8 @@ app.get("/user/:id", (req, res)=>{
 })
 
 // start server
-const port = process.env.PORT || 3000;
-app.listen(port, ()=>{
+const port = process.env.PORT;
+app.listen(port, "0.0.0.0", ()=>{
   console.log(`Server running on http://localhost:${port}`);
 });
 
